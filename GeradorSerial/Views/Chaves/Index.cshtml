@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Chave>
+
+@{
+    ViewBag.Title = "Chaves";
+}
+
+<h2>Chaves</h2>
+
+<p>
+    @Html.ActionLink("Novo", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Data)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CidadeEstado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Posto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Linha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Observacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodigodeAtivacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChavedeAtivacao)
+        </th>
+    </tr>
+
+@foreach (var item in Model.OrderByDescending(c => c.Data)) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CidadeEstado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Posto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Linha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Observacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodigodeAtivacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChavedeAtivacao)
+        </td>
+    </tr>
+}
+
+</table>

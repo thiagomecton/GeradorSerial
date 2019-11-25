@@ -1,0 +1,125 @@
+﻿@model Usuario
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Usuarios</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cpf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cpf)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Senha)
+        </dt>
+
+        <dd>
+            ******
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ativo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ativo)
+        </dd>
+
+    </dl>
+</div>
+<br />
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-default" })
+</p>
+<br />
+
+<div>
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab_a" data-toggle="tab">Chaves</a></li>
+        <li><a href="#tab_b" data-toggle="tab">Master Keys</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab_a">
+            <br />
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Cidade/Estado</th>
+                        <th>Posto</th>
+                        <th>Linha</th>
+                        <th>Observação</th>
+                        <th>Código Ativação</th>
+                        <th>Chave Ativação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Chaves.OrderByDescending(c => c.Data))
+                    {
+                        <tr>
+                            <td>@item.Data</td>
+                            <td>@item.CidadeEstado</td>
+                            <td>@item.Posto</td>
+                            <td>@item.Linha</td>
+                            <td>@item.Observacao</td>
+                            <td>@item.CodigodeAtivacao</td>
+                            <td>@item.ChavedeAtivacao</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane" id="tab_b">
+            <br />
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.MasterKeys.OrderByDescending(c => c.Data))
+                    {
+                        <tr>
+                            <td>@item.Data</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
